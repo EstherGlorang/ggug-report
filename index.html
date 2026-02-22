@@ -1,0 +1,714 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>꾸그 리포트</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="30ffb952-797b-809d-97b2-edbad24cbd2c" class="page sans"><header><h1 class="page-title" dir="auto">꾸그 리포트</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="6ab49555-96b9-4f3f-b383-cc9d45219caa" class="">동빈이의 체스 입문 리포트 ♟️</h1></div><div style="display:contents" dir="auto"><hr id="8c23976a-b3ba-4853-b084-1e0a12589a9b"/></div><div style="display:contents" dir="auto"><h2 id="09d3bd41-5edd-4c7e-bf1a-328af7618374" class="">📚 수업 하이라이트</h2></div><div style="display:contents" dir="auto"><h3 id="e1715dc3-23ce-4e92-bb56-e65462af22c9" class="">📖 수업 정보</h3></div><div style="display:contents" dir="ltr"><table id="d944e0b8-066b-4d43-966e-7a2dc0b9ebff" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="22fe89bd-6aff-449a-b426-837af28fd468"><th id="H:w?" class="simple-table-header-color simple-table-header">항목</th><th id="zTS\" class="simple-table-header-color simple-table-header" style="width:342.99998474121094px">내용</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="796c3050-9793-47e2-b6ea-645117cb41ea"><td id="H:w?" class=""><strong>수업 제목</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">체스 입문 - 기본 규칙부터 체크메이트까지</td></tr></div><div style="display:contents" dir="ltr"><tr id="39d93fc0-6527-48ff-93da-43e115537c53"><td id="H:w?" class=""><strong>수업 유형</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">원데이 수업 (1회 완성)</td></tr></div><div style="display:contents" dir="ltr"><tr id="483fb762-e2b4-48b4-bbdf-697ccfe6827e"><td id="H:w?" class=""><strong>담당 선생님</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">주영찬 선생님 (체스 전문 강사)</td></tr></div><div style="display:contents" dir="ltr"><tr id="45aab588-3086-4baa-8eaf-4f84928924b1"><td id="H:w?" class=""><strong>수업 일시</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">2026년 2월 22일</td></tr></div><div style="display:contents" dir="ltr"><tr id="55e65cc4-a0b4-4988-8226-168431dd8d9c"><td id="H:w?" class=""><strong>수업 시간</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">75분</td></tr></div><div style="display:contents" dir="ltr"><tr id="a8931740-08ab-4d43-af3f-efc26a9830f5"><td id="H:w?" class=""><strong>수업 인원</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">9명 (소그룹)</td></tr></div><div style="display:contents" dir="ltr"><tr id="ad676ff9-ad3b-4a89-97b5-73d1e5544e4e"><td id="H:w?" class=""><strong>권장 연령</strong></td><td id="zTS\" class="" style="width:342.99998474121094px">초등 저학년~고학년</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="5f752177-1eca-4df3-8e43-3f7c140c5361" class="">🎯 수업 핵심 내용</h3></div><div style="display:contents" dir="auto"><ul id="b5c1daa1-81db-490d-8845-d336c62a23f7" class="bulleted-list"><li style="list-style-type:disc"><strong>체스 기물 6가지</strong> (킹, 퀸, 룩, 비숍, 나이트, 폰)</li></ul></div><div style="display:contents" dir="auto"><ul id="b35e5ea4-ccf0-435c-93c9-b21edb5c477e" class="bulleted-list"><li style="list-style-type:disc"><strong>각 기물의 움직임 규칙</strong> (킹은 1칸, 퀸은 무제한 등)</li></ul></div><div style="display:contents" dir="auto"><ul id="9038d801-4387-434e-bc27-b0815ab06369" class="bulleted-list"><li style="list-style-type:disc"><strong>체크메이트의 개념</strong> (상대 킹을 도망 못 가게 하기)</li></ul></div><div style="display:contents" dir="auto"><ul id="27da13b2-53f8-4da3-ac19-714ba354d35d" class="bulleted-list"><li style="list-style-type:disc"><strong>퀸 2개 체크메이트 패턴</strong> (계단 메이트)</li></ul></div><div style="display:contents" dir="auto"><ul id="aad9b20e-764a-4f49-a9eb-06249cdaf383" class="bulleted-list"><li style="list-style-type:disc"><strong>퀸 + 룩 체크메이트 패턴</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="3d22f43e-0361-4222-a84b-9ccf3354f2a5" class="bulleted-list"><li style="list-style-type:disc"><strong>룩 2개 체크메이트 패턴</strong> (오른발, 왼발 전략)</li></ul></div><div style="display:contents" dir="auto"><hr id="94b292d8-4a7c-46ad-bf3a-c7f021a0b796"/></div><div style="display:contents" dir="auto"><h3 id="e095681d-5832-42ff-9511-6282055c3e65" class="">🌟 동빈이의 특별한 순간</h3></div><div style="display:contents" dir="auto"><blockquote id="29e4acd5-1146-4a59-80e1-97b75816eb01" class="">🏆 <strong>선생님이 극찬한 설명력!<br/></strong>&quot;킹 어떻게 움직이는지 알고 있어?&quot;<br/>→ 동빈: &quot;한 칸씩 움직여요. 아무 방향으로!&quot;📍 타임스탬프: 12분 21초<br/>⇒ 선생님의 반응: &quot;맞아! 동빈이가 잘 설명해 줬는데, 왕은 우리나라에서 제일 강력한 사람이야.&quot;</blockquote></div><div style="display:contents" dir="auto"><blockquote id="4c7b9b9c-cadf-4008-82f9-6d2117a09ea7" class="">🎯 <strong>체크메이트 개념을 멋지게 설명!<br/></strong>&quot;위로 피하면 누구한테 잡히고, 아래로 피하면 퀸한테 잡히니까 체크메이트인 거예요!&quot;<br/>📍 타임스탬프: 42분 15초<br/>⇒ 선생님의 반응: &quot;아까 동빈이가 멋지게 설명해 줬던 체크메이트를 우리는 이제 알 수 있어!&quot;</blockquote></div><div style="display:contents" dir="auto"><blockquote id="bdbb553f-c639-4696-9a02-ec02e43f3b84" class="">✨ 이것의 의미:<br/>- 단순히 규칙을 아는 게 아니라 &#x27;왜&#x27;를 이해!<br/>- 다른 친구들에게 설명할 수 있는 수준!<br/>- 논리적 사고력이 뛰어남!</blockquote></div><div style="display:contents" dir="auto"><hr id="71c4a8c5-ad14-4d61-b81f-4f6d0dfb9433"/></div><div style="display:contents" dir="auto"><h2 id="a2ca8562-b131-48dd-85e7-66a2c071a17f" class="">📊 수업 참여도 분석</h2></div><div style="display:contents" dir="auto"><h3 id="88397a50-0185-4b5c-8ce0-5314e0fda597" class="">📢 발언 및 질문 분석</h3></div><div style="display:contents" dir="ltr"><table id="46b6b57f-9d53-4f9f-981c-5fd9a368dfd3" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="02871283-7277-4ca0-9382-ac688ce841ef"><th id="=R\C" class="simple-table-header-color simple-table-header">항목</th><th id="?W&lt;j" class="simple-table-header-color simple-table-header">동빈이</th><th id="KMOL" class="simple-table-header-color simple-table-header">친구들 평균</th><th id="cEHk" class="simple-table-header-color simple-table-header">평가</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="65956e77-45d7-495c-bba4-dccb52b6c7fa"><td id="=R\C" class=""><strong>발언 횟수</strong></td><td id="?W&lt;j" class="">22회</td><td id="KMOL" class="">8회</td><td id="cEHk" class="">⭐⭐⭐ 최우수</td></tr></div><div style="display:contents" dir="ltr"><tr id="970ad9cf-891f-4e8b-8e5d-84e4fc2d1d28"><td id="=R\C" class=""><strong>질문 깊이</strong></td><td id="?W&lt;j" class="">심화 질문 1회</td><td id="KMOL" class="">단순 질문 위주</td><td id="cEHk" class="">⭐⭐⭐ 우수</td></tr></div><div style="display:contents" dir="ltr"><tr id="3db43d9b-79b3-4020-a744-eb031b6b057c"><td id="=R\C" class=""><strong>설명 능력</strong></td><td id="?W&lt;j" class="">2회 설명 성공</td><td id="KMOL" class="">평균 0회</td><td id="cEHk" class="">⭐⭐⭐ 최고</td></tr></div><div style="display:contents" dir="ltr"><tr id="9821cad7-e42f-418f-8a4a-2995838f0a24"><td id="=R\C" class=""><strong>실습 성공률</strong></td><td id="?W&lt;j" class="">체크메이트 성공</td><td id="KMOL" class="">성공률 60%</td><td id="cEHk" class="">⭐⭐⭐ 우수</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="c1d89f8e-9096-49e5-b191-1bb85428c998" class="">🔍 참여 특징</h3></div><div style="display:contents" dir="auto"><p id="0d725ae5-1628-4042-8acf-1dd1a07b0e10" class=""><strong>동빈이의 발언 내용:</strong></p></div><div style="display:contents" dir="auto"><ol type="1" id="c218be1a-2bc1-45c4-b632-9e5958d4c4ac" class="numbered-list" start="1"><li><strong>12분 21초</strong>: &quot;한 칸씩 움직여요. 아무 방향으로!&quot; (킹 움직임 설명)<div style="display:contents" dir="auto"><ul id="0a13fcd5-c40f-453d-be19-a33a707942d6" class="bulleted-list"><li style="list-style-type:disc">→ 선생님 &quot;동빈이가 잘 설명해 줬는데!&quot; 칭찬</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1191eb9a-de50-4d4c-9e60-0fb619594b43" class="numbered-list" start="2"><li><strong>16분 08초</strong>: &quot;퀸이요!&quot; (룩+비숍 = 퀸 파악)<div style="display:contents" dir="auto"><ul id="1886d6b4-b034-4085-8754-090f8fabc52b" class="bulleted-list"><li style="list-style-type:disc">→ 눈치 빠르게 퀸의 특징 이해</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="f7c79249-13f7-4194-868c-68a07e467b03" class="numbered-list" start="3"><li><strong>21분 21초</strong>: &quot;왕이랑 룩이랑 캐슬링 할 수 있잖아요&quot; (특수 규칙 지식)<div style="display:contents" dir="auto"><ul id="9ad54177-1ae9-46d4-bd49-9219a1a9fd90" class="bulleted-list"><li style="list-style-type:disc">→ 고급 규칙까지 알고 있음!</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="e9080b54-593c-4edf-a359-f6ed9c0e36be" class="numbered-list" start="4"><li><strong>42분 15초</strong>: &quot;위로 피하면 누구한테 잡히고, 아래로 피하면 퀸한테 잡히니까 체크메이트&quot;<div style="display:contents" dir="auto"><ul id="9a61c955-f57d-4071-a14a-037a2fb66c9d" class="bulleted-list"><li style="list-style-type:disc">→ 선생님이 &quot;멋지게 설명했다&quot;고 극찬</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="76e08d8f-39c2-4d36-81cf-82804968e543" class="numbered-list" start="5"><li><strong>62분~71분</strong>: 체크메이트 실습 적극 참여<div style="display:contents" dir="auto"><ul id="36ea935d-d312-4930-b771-f492e7c6187b" class="bulleted-list"><li style="list-style-type:disc">→ 오른발, 왼발 패턴 연습 성공</li></ul></div></li></ol></div><div style="display:contents" dir="auto"><p id="8513bd4b-fcab-4506-9e6f-d4a60fbcaaf4" class=""><strong>동빈이의 차별점:</strong></p></div><div style="display:contents" dir="auto"><p id="4a939dfd-9db8-425f-9f9f-ff25285b1e49" class="">→ <strong>높은 이해력</strong>: 한 번 듣고 바로 설명 가능  </p></div><div style="display:contents" dir="auto"><p id="382ce2eb-647d-4eab-9c4f-808bef3c2a7d" class="">→ <strong>사전 지식</strong>: 캐슬링 등 특수 규칙도 알고 있음  </p></div><div style="display:contents" dir="auto"><p id="0ca1c4ea-de48-48d3-92af-498989df1934" class="">→ <strong>논리적 사고</strong>: &quot;위로 피하면... 아래로 피하면...&quot; 체계적 분석</p></div><div style="display:contents" dir="auto"><hr id="5f08f971-cef6-4b49-9fdb-3e0e073cb951"/></div><div style="display:contents" dir="auto"><h2 id="cfdb7c5b-6f7c-4ac4-ad9c-84d516c60c1a" class="">🧠 수업 이해도 분석</h2></div><div style="display:contents" dir="ltr"><table id="dde6d622-d11d-4941-aabd-033d5c280043" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="ba4dd48b-8f2f-4b46-8f2a-8fb338564745"><th id="OBZW" class="simple-table-header-color simple-table-header">학습 내용</th><th id="ZLRZ" class="simple-table-header-color simple-table-header">이해도</th><th id="GC=W" class="simple-table-header-color simple-table-header">근거</th><th id="Z:GX" class="simple-table-header-color simple-table-header">학습 TIP</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="ee15e3bb-f117-4fec-a62c-2606a3d17a2f"><td id="OBZW" class=""><strong>1. 체스 기물 6가지 이름</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 수업 시작부터 집중<br/>  • 모든 기물 이름 숙지</td><td id="Z:GX" class=""><strong>⭐ 완벽 이해!</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="e64bf105-52bf-42cd-afe6-814465394762"><td id="OBZW" class=""><strong>2. 킹의 움직임 (모든 방향 1칸)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 12:21 <strong>스스로 설명!</strong><br/>  • &quot;한 칸씩, 아무 방향으로&quot;<br/>  • 선생님 칭찬</td><td id="Z:GX" class=""><strong>⭐⭐⭐ 설명까지 완벽!</strong><br/>다른 친구들도 이해할 수 있게 설명!</td></tr></div><div style="display:contents" dir="ltr"><tr id="56253fc9-f319-4e3f-a2ee-fd39bd4ec82f"><td id="OBZW" class=""><strong>3. 퀸의 움직임 (모든 방향 무제한)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 16:08 룩+비숍=퀸 파악<br/>  • 눈치 빠른 이해</td><td id="Z:GX" class="">퀸이 가장 강한 기물임을 이해!</td></tr></div><div style="display:contents" dir="ltr"><tr id="520a48e5-599f-4b7e-b705-5ba87ed6b2fe"><td id="OBZW" class=""><strong>4. 룩의 움직임 (가로/세로)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 선생님 설명 청취<br/>  • 퀸 유추에 활용</td><td id="Z:GX" class="">가로, 세로 개념 명확!</td></tr></div><div style="display:contents" dir="ltr"><tr id="8dfb49f3-8b6c-45fb-91fb-a27b42ab1cb9"><td id="OBZW" class=""><strong>5. 비숍의 움직임 (대각선)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 선생님 설명 청취<br/>  • 주교 모자 이야기 이해</td><td id="Z:GX" class="">대각선 개념 이해!</td></tr></div><div style="display:contents" dir="ltr"><tr id="24192ff9-e25c-4c15-b4bd-a61402829ee9"><td id="OBZW" class=""><strong>6. 나이트의 움직임 (L자)</strong></td><td id="ZLRZ" class="">●●●●○</td><td id="GC=W" class="">  • 36:54 &quot;동빈이의 이야기&quot; 언급됨<br/>  • 점프 가능 이해</td><td id="Z:GX" class="">L자 움직임 연습 필요!</td></tr></div><div style="display:contents" dir="ltr"><tr id="0d60315b-c571-40de-856d-2542b5e33d55"><td id="OBZW" class=""><strong>7. 폰의 움직임 (전진 1칸)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 21:09 폰 움직임 실습<br/>  • 2칸 규칙 이해</td><td id="Z:GX" class="">첫 이동 2칸 규칙 파악!</td></tr></div><div style="display:contents" dir="ltr"><tr id="50e6ac03-3594-4a16-b7d5-d0a4fbd9d312"><td id="OBZW" class=""><strong>8. 캐슬링 (특수 규칙)</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 21:21 <strong>스스로 질문!</strong><br/>  • &quot;왕이랑 룩이랑 캐슬링 할 수 있잖아요&quot;<br/>  • 고급 지식 보유</td><td id="Z:GX" class=""><strong>⭐⭐⭐ 특수 규칙까지!</strong><br/>수업 범위를 넘는 지식!</td></tr></div><div style="display:contents" dir="ltr"><tr id="6347d8ac-4866-4d97-81e8-e952212da62a"><td id="OBZW" class=""><strong>9. 체크메이트 개념</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 40:48 &quot;멋지게 설명했다&quot; 칭찬<br/>  • 42:15 <strong>논리적 설명 성공</strong><br/>  • &quot;위로... 아래로...&quot; 분석</td><td id="Z:GX" class=""><strong>⭐⭐⭐ 개념 완벽!</strong><br/>설명까지 가능한 수준!</td></tr></div><div style="display:contents" dir="ltr"><tr id="f316c477-59f0-432e-a2da-ac4e371dd173"><td id="OBZW" class=""><strong>10. 퀸 2개 계단 패턴</strong></td><td id="ZLRZ" class="">●●●●●</td><td id="GC=W" class="">  • 62:45~64:12 실습 참여<br/>  • 오른발, 왼발 패턴 이해<br/>  • 체크메이트 성공</td><td id="Z:GX" class="">계단 메이트 성공!</td></tr></div><div style="display:contents" dir="ltr"><tr id="e0efdf4c-aa67-4854-a43a-a590e958687e"><td id="OBZW" class=""><strong>11. 룩 2개 패턴</strong></td><td id="ZLRZ" class="">●●●●○</td><td id="GC=W" class="">  • 실습 참여<br/>  • 일부 어려움 겪음<br/>  • 반복 연습으로 개선</td><td id="Z:GX" class="">더 많은 연습 필요!</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="73c6c9c1-e311-44ac-a22b-487c67bd1c6b" class="">💡 동빈이의 학습 스타일 특징</h3></div><div style="display:contents" dir="auto"><p id="aac41d59-2890-4591-979d-23e1fe98008f" class="">✅ <strong>설명하며 학습하는 타입</strong> (한 번 이해하면 다른 사람에게 설명 가능)</p></div><div style="display:contents" dir="auto"><p id="e66be800-8a3c-4a78-8134-56f375660959" class="">✅ <strong>논리적 분석력 우수</strong> (&quot;위로 피하면... 아래로 피하면...&quot; 체계적 사고)</p></div><div style="display:contents" dir="auto"><p id="beae2b9b-f01b-4f38-bf38-12b19f637266" class="">✅ <strong>사전 지식 활용</strong> (캐슬링 등 고급 규칙까지 알고 있음)</p></div><div style="display:contents" dir="auto"><hr id="25d5bf72-8a8e-4add-a31c-5652b8a370b4"/></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80bc-8e7b-f2d657e2a517" class="">🎯 동빈이를 위한 맞춤 성장 로드맵</h2></div><div style="display:contents" dir="auto"><h3 id="30ffb952-797b-80b8-9611-f3a7d727a65e" class="">📚 사전 지식을 활용한 심화 학습</h3></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80ba-8eaf-e3c3716a38e1" class="bulleted-list"><li style="list-style-type:disc"><strong>특수 규칙 마스터하기</strong><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80a0-923f-f7a56261cf87" class="bulleted-list"><li style="list-style-type:circle">앙파상(En Passant), 캐슬링(Castling), 프로모션</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-8062-b503-c70edf8f599a" class="bulleted-list"><li style="list-style-type:circle">오늘은 일반 규칙만 배웠어요</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-8004-a554-f9831138f388" class="bulleted-list"><li style="list-style-type:disc"><strong>오프닝 전략 연구</strong><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80e7-bd23-dab6f9ec97bc" class="bulleted-list"><li style="list-style-type:circle">시칠리안 디펜스, 이탈리안 게임 등</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80cd-9086-d3cf61bbd4d0" class="bulleted-list"><li style="list-style-type:circle">초반 5수가 승부를 결정!</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="30ffb952-797b-806f-8ea3-e2d05ec94aca" class="">🎓 추천 다음 수업</h3></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-8021-ae20-d3eb361371ca" class=""><strong>체스 초급반 (12주 구독) - 선생님 직접 추천!</strong></p></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-801b-9a31-c6d58a434eff" class="bulleted-list"><li style="list-style-type:disc">주제: 특수 규칙 + 전략 + 전술 + 오프닝</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-806c-9c6b-f074120e3ed7" class="bulleted-list"><li style="list-style-type:disc">스케줄: 주 1회, 총 12주</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80e5-aae0-fcd85da3d735" class="bulleted-list"><li style="list-style-type:disc">수준: 초급~중급</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-808f-b6e1-df1c5e05eb36" class="bulleted-list"><li style="list-style-type:disc">선생님 보장: &quot;우리 반 체스 무조건 1등!&quot;</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-8000-85bf-d97b2b75ccc7" class="bulleted-list"><li style="list-style-type:disc">👉 [<a href="https://www.gguge.com/product/4348?invite=J5U3DC">수업 신청하기</a>]</li></ul></div><div style="display:contents" dir="auto"><h3 id="30ffb952-797b-80ca-bff8-da0c76d455d7" class="">🔬 추천 활동</h3></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-8047-a1eb-c58e15621a1c" class=""><strong>체스 앱으로 매일 연습</strong></p></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-8099-9e5e-caff985cd707" class="bulleted-list"><li style="list-style-type:disc">📱 <a href="http://Chess.com">Chess.com</a> 또는 Lichess 앱<div style="display:contents" dir="auto"><ul id="30ffb952-797b-8003-ac28-d5bf7adb1430" class="bulleted-list"><li style="list-style-type:circle">오늘 배운 체크메이트 패턴 연습</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80aa-a5d0-dd16ac502f44" class="bulleted-list"><li style="list-style-type:circle">퀸 + 룩, 룩 2개 패턴 반복</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-8097-9fc8-f3eb660dd675" class=""><strong>가족 체스 토너먼트</strong></p></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80d3-b135-e9dea126af20" class="bulleted-list"><li style="list-style-type:disc">엄마, 아빠와 대결</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80f1-becf-e5e7e9f5906b" class="bulleted-list"><li style="list-style-type:disc">주말마다 3판씩</li></ul></div><div style="display:contents" dir="auto"><ul id="30ffb952-797b-80ca-b7a4-f19121f9214f" class="bulleted-list"><li style="list-style-type:disc">이기면 특별한 보상!</li></ul></div><div style="display:contents" dir="auto"><hr id="d7905d6f-0e03-481a-8570-72ed89bf77c6"/></div><div style="display:contents" dir="auto"><h3 id="4871d6dc-4ec8-4660-aa2b-4ef12e6ee678" class="">🎯 동빈이의 가장 큰 강점</h3></div><div style="display:contents" dir="auto"><blockquote id="29d864f8-5f58-4f93-b860-5afee497eedc" class=""><strong>&quot;이해하고 → 설명하고 → 분석하는 완벽한 학습 사이클!&quot;<br/></strong>선생님이 &quot;동빈이가 잘 설명해 줬는데!&quot; 2번,<br/>&quot;멋지게 설명했다!&quot; 1번 칭찬했어요.<br/>단순히 아는 것을 넘어 논리적으로 분석하고 다른 사람에게 설명할 수 있는 능력이 돋보입니다!<br/>이런 아이는 <strong>체스 전략가</strong>의 자질이 충분합니다! ♟️</blockquote></div><div style="display:contents" dir="auto"><hr id="30ffb952-797b-80fd-9d53-cc4ebe941b7a"/></div><div style="display:contents" dir="auto"><h1 id="30ffb952-797b-80d2-b516-cf820e21f262" class="">수업 내용 요약</h1></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80c7-b420-c27fab8a6767" class="">1. 체스 기본 규칙 및 기물 움직임</h2></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-805d-85d2-eef6a9e56634" class="">체스는 일반 규칙과 특수 규칙으로 나뉘며, 오늘은 일반 규칙인 기물의 이름, 움직임, 보드 세팅, 프로모션, 체크, 체크메이트, 스테일메이트를 배운다.</p></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-8056-9aa4-e68ca288797b" class="">1.1. 체스 기물의 종류와 이름</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-8093-91ff-fe81eba4f72e" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/491.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/491.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80ca-897c-dda7a19151aa" class="numbered-list" start="1"><li>체스에는 총 여섯 가지 기물이 있다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8054-a1e4-edb3712af339" class="numbered-list" start="1"><li><strong>킹(King)</strong>: 왕을 뜻하며, 한국에서도 영어 이름인 킹으로 부른다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8000-b49c-d99f9c9d5afb" class="numbered-list" start="2"><li><strong>퀸(Queen)</strong>: 여왕을 뜻하며, 고슴도치처럼 생겼다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8004-8db2-dfa99fb0627d" class="numbered-list" start="3"><li><strong>룩(Rook)</strong>: 성처럼 생겼지만, 성이 아닌 룩이라는 고유 명칭을 사용한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80e2-8f73-cfbd332f3b01" class="numbered-list" start="4"><li><strong>비숍(Bishop)</strong>: 주교를 뜻하며, 주교가 쓰는 특이한 모자를 형상화한 기물이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-807b-92d0-e047089f83de" class="numbered-list" start="5"><li><strong>나이트(Knight)</strong>: 기사를 뜻하며, 말을 타고 다니는 기사를 형상화한 기물이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8081-9c77-dec02d90f2ca" class="numbered-list" start="6"><li><strong>폰(Pawn)</strong>: 쫄병을 뜻하며, 호리병을 반으로 자른 것처럼 생겼다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8050-9d52-c6d4ebca49bc" class="numbered-list" start="2"><li>기물의 이름은 수업 중 반복적으로 언급되므로 자연스럽게 익힐 수 있다.</li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80ca-831b-e1e4c22f2208" class="">1.2. 체스 기물의 움직임</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-8072-be52-dfec2d9401b4" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/727.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/727.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8000-9285-e682da9edccb" class="numbered-list" start="1"><li><strong>킹(King)</strong>은 모든 방향으로 한 칸씩만 움직일 수 있다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8028-ab78-fa445af3ba8c" class="numbered-list" start="1"><li>왕은 게을러서 멀리 가지 못하고 한 칸씩만 이동한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8027-b172-d176983ea255" class="numbered-list" start="2"><li><strong>퀸(Queen)</strong>은 모든 방향(가로, 세로, 대각선)으로 원하는 만큼 여러 칸 움직일 수 있다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8029-8871-da11ac80ba26" class="numbered-list" start="1"><li>퀸은 룩과 비숍의 움직임을 합쳐놓은 것처럼 움직이므로 체스 기물 중 가장 강력하다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80ce-bbad-c7add0fc3d29" class="numbered-list" start="3"><li><strong>룩(Rook)</strong>은 가로, 세로 방향으로 원하는 만큼 멀리 움직일 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8046-8384-e42db2ceb234" class="numbered-list" start="4"><li><strong>비숍(Bishop)</strong>은 대각선 방향으로 원하는 만큼 멀리 움직일 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80a6-b965-ed4688099996" class="numbered-list" start="5"><li><strong>나이트(Knight)</strong>는 &#x27;L&#x27;자 모양으로 움직이며, 다른 기물을 뛰어넘을 수 있는 유일한 기물이다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8016-ab19-de2f66ff63f0" class="numbered-list" start="1"><li>앞으로 두 칸, 옆으로 한 칸 또는 앞으로 한 칸, 대각선으로 한 칸 등 다양한 &#x27;L&#x27;자 형태로 이동한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8059-82ca-c0956a976d60" class="numbered-list" start="2"><li>말을 타고 다니는 기사를 형상화했기 때문에 다른 기물이 막고 있어도 점프하여 뛰어넘을 수 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-805c-822f-f375f4ea9b03" class="numbered-list" start="6"><li><strong>폰(Pawn)</strong>은 앞으로 한 칸씩만 움직일 수 있으며, 뒤로 가거나 옆으로 갈 수 없다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80e8-b227-e207006cae56" class="numbered-list" start="1"><li>단, 처음 움직일 때는 한 칸 또는 두 칸을 선택하여 움직일 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80c5-93bd-d6877918c4ce" class="numbered-list" start="2"><li>폰은 기물을 잡을 때만 앞으로 한 칸 대각선 방향으로 이동하여 잡을 수 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-8009-9066-fe8bdf73b560" class="">1.3. 폰의 승진(Promotion)</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-807e-9d4c-d135b7c09e70" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1279.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1279.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8020-835e-f2d394059a2f" class="numbered-list" start="1"><li>폰이 상대방 진영의 끝까지 도달하면 <strong>승진(Promotion)</strong>할 수 있다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8078-b1ef-cf06c2d28ea6" class="numbered-list" start="1"><li>승진 시 퀸, 룩, 비숍, 나이트 중 하나로 변신할 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8021-841c-fa552781bf97" class="numbered-list" start="2"><li>이는 죽었던 기물을 되살리는 <strong>부활</strong> 개념이 아니라, 새로운 기물로 <strong>변신</strong>하는 것이다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-808b-a21e-e169607b7bce" class="numbered-list" start="3"><li>이미 퀸이 있더라도 폰이 승진하여 퀸이 될 수 있으므로, 퀸이 여러 개 존재할 수 있다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80b9-abf2-d457002aec05" class="numbered-list" start="2"><li>폰이나 킹으로는 승진할 수 없다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80f2-841d-fa06b562e052" class="numbered-list" start="1"><li>폰은 무조건 다른 기물로 변신해야 하며, 킹은 체스 규칙상 두 개가 될 수 없기 때문이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-803a-afbb-f5a06f8df695" class="">2. 체스 보드 세팅 및 게임 규칙</h2></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-8080-997d-d11fcdcce5b3" class="">체스 보드는 폰이 두 번째 줄에, 룩, 나이트, 비숍, 퀸, 킹이 첫 번째 줄에 배치되며, 킹은 자살 금지 규칙을 지켜야 하고, 체크, 체크메이트, 스테일메이트 규칙을 이해해야 한다.</p></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80d2-899c-c0dc89b2ca6d" class="">2.1. 체스 보드 세팅 방법</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-807a-a689-d5210e753ed9" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1550.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1550.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8029-9bcd-d7138a36ecd9" class="numbered-list" start="1"><li><strong>폰(Pawn)</strong>은 두 번째 줄에 배치되어 다른 기물들을 지킨다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8048-8107-eee10c2c0379" class="numbered-list" start="2"><li><strong>룩(Rook)</strong>은 성벽처럼 가장 끝에 배치된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-808a-a947-da4adc0b7c80" class="numbered-list" start="3"><li><strong>나이트(Knight)</strong>는 똥 냄새 때문에 성벽 옆에 배치된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-801c-aeeb-ea6e9dd929b6" class="numbered-list" start="4"><li><strong>비숍(Bishop)</strong>은 나이트 옆에 배치된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80b2-a6c3-e4652d363d91" class="numbered-list" start="5"><li><strong>퀸(Queen)</strong>은 자신의 색깔과 같은 칸에 배치된다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8098-a22f-ca48b22c1973" class="numbered-list" start="1"><li>예를 들어, 하얀 퀸은 하얀 칸에, 검은 퀸은 검은 칸에 배치된다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80bc-9d10-db1a9fd764d6" class="numbered-list" start="6"><li><strong>킹(King)</strong>은 퀸 옆의 남은 칸에 배치된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-809e-b861-df68c03f6323" class="numbered-list" start="7"><li>올바르게 세팅되면 양쪽 킹과 퀸이 서로 마주 보고 있어야 한다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-805f-8494-efa23d59a603" class="numbered-list" start="1"><li>보드를 반으로 접었을 때 대칭을 이루어야 한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80ed-9e8f-e4e9c1d1e2ff" class="">2.2. 체크(Check)와 체크를 피하는 방법</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-80f3-8486-fa0bfd948030" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1776.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/1776.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8007-9496-da4abe3202b7" class="numbered-list" start="1"><li><strong>체크(Check)</strong>는 왕이 공격받고 있는 상태를 의미한다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8032-af70-d48b099ad07c" class="numbered-list" start="1"><li>원래 &#x27;확인하다&#x27;라는 뜻이었으나, 체스에서는 &#x27;왕이 공격받고 있어요&#x27;라는 의미로 바뀌었다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8020-9ebf-f7d1673ea87f" class="numbered-list" start="2"><li>체크를 당하면 반드시 피해야 하며, 왕이 잡히는 순간 게임이 끝난다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8064-9faa-cc85aee9de52" class="numbered-list" start="2"><li>체크를 피하는 세 가지 방법 (먹막피)<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-806d-8e27-e339221cf79e" class="numbered-list" start="1"><li><strong>먹기(Capture)</strong>: 공격하는 기물을 잡는다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-802e-80e8-c4a689a06fcc" class="numbered-list" start="2"><li><strong>막기(Protect)</strong>: 공격하는 기물과 킹 사이에 다른 기물을 놓아 공격을 가로막는다.<div style="display:contents" dir="auto"><ol type="i" id="30ffb952-797b-80f2-9ea5-c6e30a746977" class="numbered-list" start="1"><li>단, 나이트는 점프가 가능하므로 나이트의 공격은 막을 수 없다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80ba-ade4-e26abff3afbe" class="numbered-list" start="3"><li><strong>피하기(Retreat)</strong>: 킹이 안전한 칸으로 이동하여 공격을 피한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8033-a07b-f4e4ec717a96" class="numbered-list" start="3"><li>이 세 가지 방법은 영어로 CPR (Capture, Protect, Retreat)로도 기억할 수 있다.</li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-801a-8b22-ee7ca16ab85d" class="">2.3. 자살 금지 규칙</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-8098-9e21-c9c2755f5136" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/2347.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/2347.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80d6-ab06-c5ea0f18b482" class="numbered-list" start="1"><li>체스에서는 자신의 차례에 자신의 킹이 공격받는 곳으로 이동할 수 없다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8014-bb0f-d1cc53a1aa97" class="numbered-list" start="1"><li>이를 <strong>자살 금지 규칙</strong>이라고 한다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-804e-a6b1-c1cfc3b0df5c" class="">2.4. 체크메이트(Checkmate)와 스테일메이트(Stalemate)</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-80af-8c49-ebc9569c9ed6" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/2459.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/2459.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80f3-87af-e439cd7b7fb4" class="numbered-list" start="1"><li><strong>체크메이트(Checkmate)</strong>는 왕이 공격받고 있는 상태에서 &#x27;먹고, 막고, 피하기&#x27; 세 가지 방법으로도 공격을 피할 수 없는 상태를 의미한다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8048-9299-e3ea949661ca" class="numbered-list" start="1"><li>체크메이트를 당하면 게임에서 패배한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8083-a8df-dd86b8f3152f" class="numbered-list" start="2"><li>체스는 왕을 잡는(사로잡는) 게임이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80bd-aba0-f8e0034d6508" class="numbered-list" start="2"><li><strong>스테일메이트(Stalemate)</strong>는 킹이 공격받고 있지 않지만, 움직일 수 있는 기물이 전혀 없어 더 이상 수를 둘 수 없는 상태를 의미한다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80ab-90e2-f5993142e26e" class="numbered-list" start="1"><li>스테일메이트가 발생하면 무승부로 처리된다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-802a-b044-c49c09dca045" class="numbered-list" start="2"><li>킹이 움직일 수 없더라도 다른 기물이 움직일 수 있다면 스테일메이트가 아니다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-8055-90ab-d4293e37d688" class="">3. 체크메이트 패턴 연습</h2></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-80c7-b93b-dcfdd289cdaa" class="">체크메이트는 물고기를 몰듯이 상대 킹을 구석으로 몰아넣는 전략이며, 퀸 두 개, 퀸과 룩, 룩 두 개를 이용한 계단 메이트와 이사 다니기 패턴을 연습한다.</p></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-8020-b883-e8f535e9d993" class="">3.1. 물고기 몰기 전략</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-80b7-8ec3-fa87d1985ad2" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3201.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3201.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8034-a309-ee5abf2b7b33" class="numbered-list" start="1"><li>체스에서 킹을 잡는 것은 물고기를 잡는 것과 유사하다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8066-be55-d3ffd7e53b6a" class="numbered-list" start="1"><li>혼자서는 물고기를 잡기 어렵듯이, 여러 기물이 협력하여 킹을 몰아야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-809e-9af9-e7bd935119b7" class="numbered-list" start="2"><li>여러 기물이 힘을 합쳐 상대 킹을 구석으로 몰아넣은 후 잡는 것이 효과적이다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-804c-8f9d-e83fde76bd4a" class="">3.2. 퀸 두 개로 체크메이트 (계단 메이트)</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-8096-8cc8-dc00fc30f138" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3306.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3306.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80cd-8b69-cc8e62286efa" class="numbered-list" start="1"><li><strong>계단 메이트</strong>는 두 개의 퀸을 이용하여 상대 킹을 한 칸씩 몰아붙여 체크메이트하는 방법이다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80d8-8acf-c540ed454f8f" class="numbered-list" start="1"><li>한 퀸이 킹의 퇴로를 막고, 다른 퀸이 킹을 공격하여 킹이 움직일 수 있는 공간을 점차 줄여나간다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-807e-b411-c85ab84acf36" class="numbered-list" start="2"><li>마치 계단을 오르듯이 한 칸씩 차근차근 움직여야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80ba-862d-f3f9e3a801a1" class="numbered-list" start="3"><li>다리가 길다고 한 번에 여러 칸을 이동하면 킹을 제대로 몰 수 없다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-80dc-b624-c81c5d943c62" class="">3.3. 퀸과 룩으로 체크메이트 (계단 메이트)</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-8054-ac90-eb737389e661" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3909.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/3909.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-800c-b595-d76aff4b1e73" class="numbered-list" start="1"><li>퀸 두 개로 하는 계단 메이트와 동일한 원리로, 퀸과 룩을 이용하여 상대 킹을 몰아 체크메이트한다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8007-8607-e01e2e9f7a85" class="numbered-list" start="1"><li>한 기물이 킹의 퇴로를 막고, 다른 기물이 킹을 공격하며 계단처럼 지그재그로 움직여 킹을 구석으로 몰아넣는다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80b8-89ff-d78679484b91" class="numbered-list" start="2"><li>이때도 차근차근 한 칸씩 이동하는 것이 중요하다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-8008-a0f2-c7985a1fdac9" class="">3.4. 룩 두 개로 체크메이트 (계단 메이트 + 이사 다니기)</h2></div><div style="display:contents" dir="ltr"><figure id="30ffb952-797b-808e-827e-faf98e8af5c3" class="image"><a href="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/4155.jpg"><img src="https://resource-release.s3.ap-northeast-2.amazonaws.com/thumbnails/ba1b23ac-3bb8-43f5-ac7c-18dd06b8ae37/4155.jpg"/></a></figure></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-8054-913e-fcebbe1e0e74" class="numbered-list" start="1"><li>룩 두 개로 체크메이트하는 방법은 계단 메이트와 유사하지만, <strong>이사 다니기</strong> 전략이 추가된다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-806e-a2c3-e11d0b2c8fbb" class="numbered-list" start="1"><li>룩은 대각선으로 움직일 수 없으므로, 킹을 몰다가 룩이 킹에게 잡힐 위험이 있을 때 다른 룩으로 자리를 바꿔 킹을 계속 몰아붙여야 한다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8092-9dc9-f254902b2670" class="numbered-list" start="2"><li>이사 다닐 때도 룩의 움직임 규칙(가로, 세로)을 지켜야 하며, 킹이 움직이면 다시 계단처럼 차근차근 몰아간다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><h2 id="30ffb952-797b-801d-82cb-ffee5062e143" class="">3.5. 수업 마무리 및 추가 학습 안내</h2></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-80bc-b128-f7a3d0fe4a15" class="numbered-list" start="1"><li>수업 후 피드백과 연습 방법, 체크메이트 영상이 제공되므로 복습을 통해 실력을 향상시킬 수 있다.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="30ffb952-797b-801c-9a84-f8411a044dcd" class="numbered-list" start="2"><li>체스 정규 수업은 초급반부터 프로반까지 단계별로 진행되며, 꾸준히 수강하면 대회 입상 및 유소년 국가대표 선발전 출전까지 가능하다.<div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-80a7-ad66-e87f481040d3" class="numbered-list" start="1"><li>초급반 수료 시 반에서 1등, 중급반 수료 시 대회 입상, 고급반 수료 시 대회 상위권 입상이 가능하다.</li></ol></div><div style="display:contents" dir="auto"><ol type="a" id="30ffb952-797b-8070-a188-e111d8159438" class="numbered-list" start="2"><li>대회반부터는 정식 대회 출전, 프로반부터는 유소년 국가대표 선발전 출전이 가능하다.</li></ol></div></li></ol></div><div style="display:contents" dir="auto"><hr id="30ffb952-797b-80ff-89d6-e894cf68f302"/></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-80e2-a4b6-c0dc9fb10cd5" class=""><em>이 리포트는 AI가 수업 영상을 분석하여 자동 생성되었습니다.</em>  </p></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-80aa-9681-df9900efab74" class=""><em>동빈이의 성장을 응원합니다! ♔✨</em></p></div><div style="display:contents" dir="auto"><p id="30ffb952-797b-80f2-969f-eb8f05845517" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
